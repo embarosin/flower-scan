@@ -219,7 +219,11 @@ export default function App() {
   async function startCam() {
     try {
       setCamErr(null);
-      const s = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment", width: { ideal: 640 }, height: { ideal: 480 } } });
+      const s = await navigator.mediaDevices.getUserMedia({ 
+  video: { 
+    facingMode: "environment" // Still asks for the back camera
+  } 
+});
       streamRef.current = s;
       if (videoRef.current) { videoRef.current.srcObject = s; await videoRef.current.play(); }
       setStatus("scanning");
